@@ -1,0 +1,69 @@
+// Global Styles
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// Placeholders
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// Main Styles
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: #161616;
+    @extend %flex-center; 
+
+    &__content {
+
+        i {
+            width: 10rem;
+            height: 10rem;
+            border: 2px solid salmon;
+            position: absolute; 
+            animation: animation-i 5s ease-in-out forwards infinite;
+
+            @keyframes animation-i {
+                0%, 100% {
+                    transform: rotate(0deg);
+                }
+
+                50% {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        
+        @for $i from 1 through 8 {
+            :nth-child(#{$i}) {
+                width: $i *2rem;
+                height: $i *2rem;
+                animation-delay: $i*.5s;
+                border: $i*.5px solid salmon;
+
+                li {
+                    width: 50%;
+                    height: 50%;
+                    position: absolute;
+                    border: 2px solid slateblue;
+                    top: 0;
+                    right: 0;
+                    list-style: none;
+                }
+            }
+        }
+    }
+}
